@@ -1,3 +1,5 @@
+#%%
+
 class Node:
     'Common base class for all nodes'
 
@@ -13,10 +15,10 @@ class Node:
         self.children.append(childNode)
       
     def __repr__(self):
-        return "Node: children:{}, metadata: {}".format(len(self.children), self.metadata )
+        return "Node:{}, children:{}, metadata: {}".format(self.name, len(self.children), self.metadata )
       
       
-#anode = Node('firstNode', 1)
+#anode = Node('firstNode')
 #print(anode)
 #
 #secondnode = Node('secondNode', 2)
@@ -24,82 +26,39 @@ class Node:
 #
 #thirdnode = Node('thirdNode', 3)
 
+initinput0 = '0 1 99'
+initinput1 = '1 1 0 1 99 2'
+initinput2 = '2 3 0 3 10 11 12 1 1 0 1 99 2 1 1 2'
 
-initinput = '2 3 0 3 10 11 12 1 1 0 1 99 2 1 1 2'
-
-
-#root = Node('root')
-def printChildren(node, counter):
-    for i in range(len(node.children)):
-        currentNode = node.children[i]
-        print("    "*counter, currentNode)
-        counterNext = counter+1
-        printChildren(currentNode,counterNext)
-
-def readChild(initinput):
+def createTree(initinput):
 
     inputlist = initinput.split()
-    leninputlist = len(inputlist)
-    nodename = 0
     
-    while leninputlist >0:
-    
-        anode = Node(nodename)
-        nodename+=1
-        firstchar = int(inputlist[0])
-        secchar = int(inputlist[1])
-        print(firstchar, secchar, inputlist)
-        inputlist.pop(0)
-        inputlist.pop(0)
+    i=0
+    while i <len(initinput)-1:
+        
+        anode = Node(i)
+        print(initinput[i])
+     
+        firstchar = int(inputlist[i])
+        print(firstchar)
+        secchar = int(inputlist[i+1])
+        print(secchar)
 
         
         if firstchar==0:
             for j in range(secchar):
-                anode.addMeta(inputlist[0])
-                inputlist.pop(0)
+                anode.addMeta(inputlist[2])
+            i+=1
+            
+        if i <len(initinput)-1:
+            break
+
         else:        
             #read meta
-            for j in range(secchar):
-                anode.addMeta(inputlist[-1])
-                inputlist.pop()
-      
-            #read children for this anode
-            
-            
-            #anode.addChild(child)
-            
-        
-
-    #print(inputlist)
-
-#    nn = Node("aChil")
-#    nn.addMeta(666)
-#
-#    ii = Node("anotherChil")
-#    ii.addMeta(9)
-#    ii.addMeta(99)
-#    
-#    yy = Node("ThirdLayer")
-#    yy.addMeta(7)
-#    ii.addChild(yy)
-#
-#    anode.addChild(nn)
-#    anode.addChild(ii)
+            i+=1
+            print("this node has children")
+#            for j in range(secchar):
+#                anode.addMeta(inputlist[-1])
+#                inputlist.pop()
     
-#    print(anode.children[0])
-    print()
-    print("Root:", anode)
-    printChildren(anode, 1)        
-    print()
-    return anode
-        
-
-readChild(initinput)
-        
-
-
-
-
-
-
-

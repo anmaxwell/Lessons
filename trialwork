@@ -15,3 +15,12 @@ listinput = input.split()
 print(listinput)
     
 #%%
+
+i=0
+
+initinput0 = '0 1 99'
+
+while i < len(initinput0):
+    print(initinput0[i])
+    print('i is',i)
+    i+=1
