@@ -26,16 +26,20 @@ class Node:
 
 # Print the tree
     def PrintTree(self):
-        if self.left:
-            self.left.PrintTree()
-        print( self.data),
         if self.right:
             self.right.PrintTree()
+            
+        print(self.data)
+        
+        if self.left:
+            self.left.PrintTree()
 
 # Use the insert method to add nodes
 root = Node(12)
 root.insert(6)
 root.insert(14)
 root.insert(3)
+root.insert(7)
+root.insert(8)
 
 root.PrintTree()
